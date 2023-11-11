@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Internal CSS Example</title>
+    <style>
+        /* Internal CSS rules for text alignment, padding, and background color */
+        body {
+            background-color: lightgray;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: black;
+            text-align: center; /* Center-align the heading text */
+            padding: 20px; /* Add padding to the heading */
+            background-color: skyblue; /* Set a background color for the heading */
+        }
+
+        p {
+            font-size: 16px;
+            text-align: left; /* Left-align the paragraph text */
+            padding: 10px; /* Add padding to the paragraph */
+            background-color: pink; /* Set a background color for the paragraph */
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact List</h1>
+    <ul>
+        {% for contact in contacts %}
+            <li>
+                Name: {{ contact.name }}, Email: {{ contact.email }}
+                <a href="{% url 'edit_contact' contact.id %}">Edit</a>
+                <a href="{% url 'delete_contact' contact.id %}">Delete</a>
+            </li>
+        {% empty %}
+            <p>No contacts available.</p>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_contact' %}">Add Contact</a>
+</body>
+</html>

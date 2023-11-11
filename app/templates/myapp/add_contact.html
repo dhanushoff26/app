@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Internal CSS Example</title>
+    <style>
+        /* Internal CSS rules for text alignment, padding, and background color */
+        body {
+            background-color: lightgray;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: black; /* Change heading text color to black */
+            text-align: center; /* Center-align the heading text */
+            padding: 20px; /* Add padding to the heading */
+            background-color: lightblue; /* Change background color for the heading */
+        }
+
+        p {
+            font-size: 18px; /* Increase paragraph font size to 18px */
+            text-align: left; /* Left-align the paragraph text */
+            padding: 15px; /* Increase padding for the paragraph */
+            background-color: lightgreen; /* Change background color for the paragraph */
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Contact</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <input type="submit" value="Add Contact">
+    </form>
+    <a href="{% url 'list_contacts' %}">Back to Contact List</a>
+</body>
+</html>
